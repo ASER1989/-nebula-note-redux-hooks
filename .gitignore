@@ -128,3 +128,14 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# OS
+.DS_Store
+
+# IDE
+.idea
+
+
+*storybook.log
+
+**/cypress/screenshots
