@@ -1,8 +1,9 @@
 {
   "name": "@nebula-note/redux-hooks",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "description": "Simplify Redux usage: no actions, no reducers, only hooks.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "vite build"
   },
@@ -10,8 +11,13 @@
     "type": "git",
     "url": "git+https://github.com/ASER1989/redux-hooks.git"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
   "keywords": [
     "redux",
+    "redux-hooks",
     "useRedux",
     "hooks",
     "reduxHooks",

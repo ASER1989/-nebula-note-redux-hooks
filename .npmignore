@@ -9,3 +9,7 @@ node_modules/
 *.tmp
 *.swp
 .tscache/
+prettier.config.js
+tsconfig.json
+vite.config.ts
+.babelrc

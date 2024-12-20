@@ -1,10 +1,23 @@
+
 # @nebula-note/redux-hooks
+
+[【中文】](./README_CN.md)
+
 
 @nebula-note/redux-hooks is a tool that manages state entirely through hooks. no actions, no reducers, only hooks.
 
 ## Guide
+### install
+``` 
+npm i @nebula-note/redux-hooks 
+```
 
-### createStore
+or
+```
+ yarn add @nebula-note/redux-hooks
+ ```
+
+### configureStore
 
 The parameters accepted by configureStore are the same as those in @reduxjs/toolkit configureStore. If your project is
 already using @reduxjs/toolkit, it can be easily switched over.
@@ -25,31 +38,27 @@ import { useRedux } from '@nebula-note/redux-hooks';
 
 const REDUX_KEY = 'exampleReduxName';
 type ExampleState = {
-    filter?:{
-        keyword?:string;
-    },
-    dataList:Array<{
-        id:string;
-        title:string;
-        content:string;
-        createTime:number;
-        updateTime:number;
-    }>,
-    fetchStatus:'None'|'Loading'|'Success'|'Error'
+    count:number
 }
 
 export const useExampleRedux = () => {
-     const { state, setState, updateState } = useRedux<ExampleState>(REDUX_KEY, {
-            fetchStatus: 'None',
-            dataList: [],
-        });
+     const { state, setState } = useRedux<ExampleState>(REDUX_KEY, {count:0});
+     
+     const handleAdd = () => {
+        setState(state.count+1);
+     }
+     
+     const handleReduce = ()=>{
+        setState(state.count-1);
+     }
         
-        const fetchData = async () => {
-          const resp = await request.get('http://localhost/api/example/list');
-          updateState({dataList:resp.data, fetchStatus:'Success'});
-        }
-        
-        ....
+     return(
+        <div style={{display:'flex'}}>
+            <button onclick={handleAdd}>+</button>
+            <div>{state.count}</div>
+            <button onclick={handleReduce}>-</button>
+        </div>
+     )
 }
 
 ```
