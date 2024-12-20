@@ -67,26 +67,27 @@ export const useExampleRedux = () => {
 
 状态数据
 
-### getStateSync
+### getStateSync: () => SliceType
 
 返回 Redux 中最新的状态值
 
-### setState
+### setState: (payload: SliceType) => void
 
 设置 Redux 中的状态值
 
-### setStateSync
+### setStateSync: (payload: SliceType) => void
 
 同步设置 Redux 中的状态值，这相当于 setState。不同之处在于，使用 setStateSync 后，你可以使用 getStateSync 来获取最新的状态。
 
-### updateState
+### updateState(payload: Partial<SliceType>)=> void
 
 更新 Redux 中的状态值，新的状态值将与之前的状态值合并。参数是部分状态内容。特别需要注意的是，对于数组属性，updateState 不会合并数组属性，而是直接用提供的数据覆盖 Redux 中对应的属性。
 
-## updateStateSync
+### updateStateSync(payload: Partial<SliceType>)=> void
 
 跟 updateState 一样，在调用完成后，你可以使用 getStateSync 来获取最新的状态数据。
-## take
+
+### take:(actionType: "setState" | "updateState") => Promise<() => void>
 
 此方法用于监听Action提交状态的变化。它返回一个 promise，动作执行后该 promise 会被 resolved，并返回一个函数用于取消监听。
 
@@ -102,7 +103,7 @@ updateState({dataList: resp.data, fetchStatus: 'Success'});
 
 ```
 
-## takeOnce
+### takeOnce: (actionType: "setState" | "updateState") => Promise<void>
 
 类似于 take 函数，但只执行一次。调用后，它返回一个 promise 对象，当 promise 被 resolved 时，返回的内容为空。
 
