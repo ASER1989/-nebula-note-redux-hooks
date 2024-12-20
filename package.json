@@ -1,6 +1,6 @@
 {
   "name": "@nebula-note/redux-hooks",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simplify Redux usage: no actions, no reducers, only hooks.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
