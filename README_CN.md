@@ -3,7 +3,7 @@
 [【English】](./README.md)
 
 
-@nebula-note/redux-hooks 是一个完全通过钩子管理状态的工具。没有 actions，没有 reducers，只有hooks.
+@nebula-note/redux-hooks是一个基于redux、react-redux、@reduxjs/toolkit实现的完全通过hooks管理状态的轻量级解决方案。没有 actions，没有 reducers，只有hooks.
 
 ## 使用指南
 ### 安装
@@ -27,7 +27,7 @@ const store = configureStore();
 
 ### useRedux
 
-useRedux 的使用方式类似于 React 的 useState，不过多了一个状态名称参数。在下面的代码中，REDUX_KEY 对应 Redux 状态中的状态名称，等同于 @reduxjs/toolkit 中 createSlice 的 name 参数。
+useRedux 的使用方式类似于 React 的 useState，不过多了一个状态名称参数。在下面的代码中，REDUX_KEY 对应 Redux 状态中的状态名称，等同于 @reduxjs/toolkit 中 createSlice 的 name 参数。使用相同REDUX_KEY可以轻松的在不同的页面或组件中共享状态数据。
 
 ``` typescript
 import { useRedux } from '@nebula-note/redux-hooks';
