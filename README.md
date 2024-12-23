@@ -85,13 +85,13 @@ Set the state value in Redux
 Set the state value in Redux synchronously, which is equivalent to setState.The difference is that after using
 setStateSync, you can use getStateSync to get the latest state.
 
-### updateState(payload: Partial<SliceType>)=> void
+### updateState(payload: Partial\<SliceType\>)=> void
 
 Update the state value in Redux, and the state value will be merged with the previous state value.The parameter is
 partial state content. It is particularly important to note that for Array properties, updateState will not merge the
 Array properties but will directly overwrite the corresponding properties in Redux with the provided data.
 
-### updateStateSync(payload: Partial<SliceType>)=> void
+### updateStateSync(payload: Partial\<SliceType\>)=> void
 
 Like updateState, after the call is completed, you can use getStateSync to retrieve the latest state
 data.

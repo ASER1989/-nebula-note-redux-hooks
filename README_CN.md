@@ -79,11 +79,11 @@ export const useExampleRedux = () => {
 
 同步设置 Redux 中的状态值，这相当于 setState。不同之处在于，使用 setStateSync 后，你可以使用 getStateSync 来获取最新的状态。
 
-### updateState(payload: Partial<SliceType>)=> void
+### updateState(payload: Partial\<SliceType\>)=> void
 
 更新 Redux 中的状态值，新的状态值将与之前的状态值合并。参数是部分状态内容。特别需要注意的是，对于数组属性，updateState 不会合并数组属性，而是直接用提供的数据覆盖 Redux 中对应的属性。
 
-### updateStateSync(payload: Partial<SliceType>)=> void
+### updateStateSync(payload: Partial\<SliceType\>)=> void
 
 跟 updateState 一样，在调用完成后，你可以使用 getStateSync 来获取最新的状态数据。
 
