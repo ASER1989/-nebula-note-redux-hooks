@@ -1,22 +1,22 @@
 # @nebula-note/redux-hooks
 
-[【English】](./README.md)
+[![npm version](https://img.shields.io/npm/v/@nebula-note/redux-hooks.svg?style=flat-square)](https://www.npmjs.com/package/@nebula-note/redux-hooks)
+<img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
 
+[English](README.md) | 中文文档
 
-@nebula-note/redux-hooks是一个基于redux、react-redux、@reduxjs/toolkit实现的完全通过hooks管理状态的轻量级解决方案。没有 actions，没有 reducers，只有hooks.
+@nebula-note/redux-hooks是一个基于redux、react-redux、@reduxjs/toolkit实现的完全通过hooks管理状态的轻量级解决方案。没有actions，没有reducers，只有hooks。
 
-## 使用指南
-### 安装
+## 安装
 ``` 
 npm i @nebula-note/redux-hooks 
 ```
-
 或
 ```
  yarn add @nebula-note/redux-hooks
  ```
 
-### configureStore
+## 初始化Store
 
 configureStore 接受的参数与 @reduxjs/toolkit 中的 configureStore 参数相同。如果你的项目已经在使用 @reduxjs/toolkit，可以轻松切换过来。
 
@@ -25,7 +25,7 @@ import { configureStore } from '@nebula-note/redux-hooks';
 const store = configureStore();
 ```
 
-### useRedux
+## 使用useRedux
 
 useRedux 的使用方式类似于 React 的 useState，不过多了一个状态名称参数。在下面的代码中，REDUX_KEY 对应 Redux 状态中的状态名称，等同于 @reduxjs/toolkit 中 createSlice 的 name 参数。使用相同REDUX_KEY可以轻松的在不同的页面或组件中共享状态数据。
 
@@ -41,11 +41,11 @@ export const useExampleRedux = () => {
      const { state, setState } = useRedux<ExampleState>(REDUX_KEY, {count:0});
      
      const handleAdd = () => {
-        setState(state.count+1);
+        setState(state.count + 1);
      }
      
      const handleReduce = ()=>{
-        setState(state.count-1);
+        setState(state.count - 1);
      }
         
      return(
@@ -59,7 +59,7 @@ export const useExampleRedux = () => {
 
 ```
 
-## Methods and Properties
+## 方法和属性
 
 以下是 useRedux 提供的方法和属性：
 

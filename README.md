@@ -1,12 +1,14 @@
 # @nebula-note/redux-hooks
 
-[【中文】](./README_CN.md)
+[![npm version](https://img.shields.io/npm/v/@nebula-note/redux-hooks.svg?style=flat-square)](https://www.npmjs.com/package/@nebula-note/redux-hooks)
+<img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
 
-@nebula-note/redux-hooks is a tool that manages state entirely through hooks. no actions, no reducers, only hooks.
+English | [中文文档](README_CN.md)
 
-## Guide
+@nebula-note/redux-hooks is a lightweight solution for state management fully driven by hooks, built on top of Redux, React-Redux, and @reduxjs/toolkit. No actions, no reducers, just hooks.
 
-### install
+
+## Installation
 
 ``` 
 npm i @nebula-note/redux-hooks 
@@ -18,7 +20,7 @@ or
  yarn add @nebula-note/redux-hooks
  ```
 
-### configureStore
+## Configure Store
 
 The parameters accepted by configureStore are the same as those in @reduxjs/toolkit configureStore. If your project is
 already using @reduxjs/toolkit, it can be easily switched over.
@@ -28,11 +30,11 @@ import { configureStore } from '@nebula-note/redux-hooks';
 const store = configureStore();
 ```
 
-### useRedux
+## Usage 
 
-The usage of useRedux is similar to React’s useState, with the addition of a state name parameter. In the following
-code, REDUX_KEY corresponds to the state name in the Redux state, which is equivalent to the name parameter in
-createSlice from @reduxjs/toolkit.
+----
+
+The usage of useRedux is similar to React’s useState, but it includes an additional parameter for the state name. In the code below, REDUX_KEY corresponds to the state name in the Redux store, equivalent to the name parameter in @reduxjs/toolkit’s createSlice. By using the same REDUX_KEY, you can easily share state data across different pages or components.
 
 ``` typescript
 import { useRedux } from '@nebula-note/redux-hooks';
@@ -46,11 +48,11 @@ export const useExampleRedux = () => {
      const { state, setState } = useRedux<ExampleState>(REDUX_KEY, {count:0});
      
      const handleAdd = () => {
-        setState(state.count+1);
+        setState(state.count + 1);
      }
      
      const handleReduce = ()=>{
-        setState(state.count-1);
+        setState(state.count - 1);
      }
         
      return(
