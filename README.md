@@ -30,9 +30,7 @@ import { configureStore } from '@nebula-note/redux-hooks';
 const store = configureStore();
 ```
 
-## Usage 
-
-----
+## Usage
 
 The usage of useRedux is similar to React’s useState, but it includes an additional parameter for the state name. In the code below, REDUX_KEY corresponds to the state name in the Redux store, equivalent to the name parameter in @reduxjs/toolkit’s createSlice. By using the same REDUX_KEY, you can easily share state data across different pages or components.
 
