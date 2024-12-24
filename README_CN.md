@@ -77,7 +77,7 @@ export const useExampleRedux = () => {
 
 ### setStateSync: (payload: SliceType) => void
 
-同步设置 Redux 中的状态值，这相当于 setState。不同之处在于，使用 setStateSync 后，你可以使用 getStateSync 来获取最新的状态。
+同步设置 Redux 中的状态值，相当于 setState。不同之处在于，使用 setStateSync 后，可以立即使用 getStateSync 来获取最新的状态。
 
 ### updateState(payload: Partial\<SliceType\>)=> void
 
@@ -85,7 +85,7 @@ export const useExampleRedux = () => {
 
 ### updateStateSync(payload: Partial\<SliceType\>)=> void
 
-跟 updateState 一样，在调用完成后，你可以使用 getStateSync 来获取最新的状态数据。
+跟 updateState 一样，在调用完成后，可以立即使用 getStateSync 来获取最新的状态数据。
 
 ### take:(actionType: "setState" | "updateState") => Promise<() => void>
 
