@@ -3,7 +3,7 @@ import {getStore} from '../configureStore';
 import {createSliceInstance} from '../tools/sliceHelper';
 import {useDispatch, useSelector} from 'react-redux';
 
-type SliceUpdater<StateType, PayloadType> = (ownState: StateType) => PayloadType;
+type SliceUpdater<StateType> = (ownState: StateType) => StateType;
 export const useRedux = <SliceType>(stateName: string, initialState: SliceType) => {
   const store = getStore();
   const dispatch = useDispatch();
@@ -53,16 +53,16 @@ export const useRedux = <SliceType>(stateName: string, initialState: SliceType) 
     return store.getState()[stateName] as SliceType;
   };
 
-  const setState = (payload: SliceType | SliceUpdater<SliceType, SliceType>) => {
+  const setState = (payload: SliceType | SliceUpdater<SliceType>) => {
     if (typeof payload === 'function') {
       const ownState = getStateSync();
-      const newState = (payload as SliceUpdater<SliceType, SliceType>)(ownState);
+      const newState = (payload as SliceUpdater<SliceType>)(ownState);
       dispatch(reducerInstance.actions.setState(newState));
       return;
     }
     dispatch(reducerInstance.actions.setState(payload));
   };
-  const setStateSync = (payload: SliceType | SliceUpdater<SliceType, SliceType>) => {
+  const setStateSync = (payload: SliceType | SliceUpdater<SliceType>) => {
     (async () => {
       const takeHandle = takeOnce('setState');
       setState(payload);

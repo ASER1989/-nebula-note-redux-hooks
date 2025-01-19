@@ -41,21 +41,26 @@ export const useExampleRedux = () => {
      const { state, setState } = useRedux<ExampleState>(REDUX_KEY, {count:0});
      
      const handleAdd = () => {
-        setState(state.count + 1);
+        setState((ownState)=>({count:ownState.count + 1}));
      }
      
      const handleReduce = ()=>{
-        setState(state.count - 1);
+        setState((ownState)=>({count:ownState.count - 1}));
+     }
+     
+     const handleCountChange = (e:ReactChangeEvent<HTMLInputElement>)=>{
+        setState({count:Number(e.target.value)});
      }
         
      return(
         <div style={{display:'flex'}}>
             <button onclick={handleAdd}>+</button>
-            <div>{state.count}</div>
+            <input value={state.count} onChange={handleCountChange}/>
             <button onclick={handleReduce}>-</button>
         </div>
      )
 }
+
 
 ```
 
@@ -71,11 +76,11 @@ export const useExampleRedux = () => {
 
 返回 Redux 中最新的状态值
 
-### setState: (payload: SliceType) => void
+### setState: (payload: SliceType | (ownState:SliceType)=>SliceType) => void
 
 设置 Redux 中的状态值
 
-### setStateSync: (payload: SliceType) => void
+### setStateSync: (payload: SliceType | (ownState:SliceType)=>SliceType) => void
 
 同步设置 Redux 中的状态值，相当于 setState。不同之处在于，使用 setStateSync 后，可以立即使用 getStateSync 来获取最新的状态。
 
