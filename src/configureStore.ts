@@ -18,13 +18,17 @@ export const getStore = () => store;
 export const configureStore = <State = Record<string, unknown>>(
   options: ConfigureStoreOptions<State> = {} as ConfigureStoreOptions<State>,
 ): Store<State> => {
+  if (store) {
+    return store;
+  }
+
   const reducerHolder = {
     __holder: (state = '1.0.0') => state,
   };
 
   const reducerManager = createReducerManager<State>(options?.reducer ?? reducerHolder);
 
-  const store = toolkitConfigureStore({
+  store = toolkitConfigureStore({
     ...options,
     reducer: reducerManager.reduce as Reducer<State>,
     middleware: (getDefaultMiddleware) => {
